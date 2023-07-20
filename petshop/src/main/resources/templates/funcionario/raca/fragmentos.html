@@ -1,0 +1,21 @@
+<div class="container" th:fragment="form(requisicaoFormRaca, action)">
+    <div class="row">
+        <form th:object="${requisicaoFormRaca}" th:action="${action}" method="POST">
+
+            <div class="mb-3">
+                <label class="form-label">Tipo de animal</label>
+                <select class="form-select" th:field="*{tipo.idtipo}">
+                    <option th:each="tipo : ${tipo}"
+                            th:value="${tipo.idtipo}" th:text="${tipo.nome}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nome da Raça</label>
+                <input class="form-control" placeholder="Digite o nome da raça" th:errorclass="is-invalid" type="text" th:field="*{nome}">
+                <div class="invalid-feedback" th:errors="*{nome}"></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submeter</button>
+            <a href="javascript:history.back()" class="btn btn-link btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        </form>
+    </div>
+</div>

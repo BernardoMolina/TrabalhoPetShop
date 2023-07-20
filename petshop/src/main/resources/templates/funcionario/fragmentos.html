@@ -1,0 +1,38 @@
+<div class="container" th:fragment="form(requisicaoFormFuncionario, action)">
+    <div class="row">
+        <form th:object="${requisicaoFormFuncionario}" th:action="${action}" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Nome do Funcionario</label>
+                <input class="form-control" placeholder="Digite o nome do funcionário" th:errorclass="is-invalid" type="text" th:field="*{nome}">
+                <div class="invalid-feedback" th:errors="*{nome}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Rg</label>
+                <input class="form-control" placeholder="9999999999" onkeypress="$(this).mask('0000000000');" th:errorclass="is-invalid" maxlength="10" minlength="10" type="text" th:field="*{rg}">
+                <div class="invalid-feedback" th:errors="*{rg}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cpf</label>
+                <input class="form-control" placeholder="999.999.999-99" onkeypress="$(this).mask('000.000.000-00');" th:errorclass="is-invalid" maxlength="14" minlength="14" type="text"  th:field="*{cpf}">
+                <div class="invalid-feedback" th:errors="*{cpf}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Telefone</label>
+                <input class="form-control" placeholder="(99) 99999-9999" onkeypress="$(this).mask('(00) 90000-0000');"  th:errorclass="is-invalid" maxlength="15" minlength="15" type="text" th:field="*{telefone}">
+                <div class="invalid-feedback" th:errors="*{telefone}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input class="form-control" placeholder="Digite o seu email" th:errorclass="is-invalid" type="text" th:field="*{email}">
+                <div class="invalid-feedback" th:errors="*{email}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Senha</label>
+                <input class="form-control" placeholder="Digite a senha desejada" th:errorclass="is-invalid" type="text" th:field="*{senha}">
+                <div class="invalid-feedback" th:errors="*{senha}"></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submeter</button>
+            <a href="javascript:history.back()" class="btn btn-link btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        </form>
+    </div>
+</div>

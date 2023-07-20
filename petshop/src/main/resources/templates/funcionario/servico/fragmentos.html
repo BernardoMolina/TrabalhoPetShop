@@ -1,0 +1,28 @@
+<div class="container" th:fragment="form(requisicaoFormServico, action)">
+    <div class="row">
+        <form th:object="${requisicaoFormServico}" th:action="${action}" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Nome do Servico</label>
+                <input class="form-control" placeholder="Digite o nome do serviço" th:errorclass="is-invalid" type="text" th:field="*{nome}">
+                <div class="invalid-feedback" th:errors="*{nome}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descrição</label>
+                <input class="form-control" placeholder="Descreva o serviço" th:errorclass="is-invalid" type="text" th:field="*{descricao}">
+                <div class="invalid-feedback" th:errors="*{descricao}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Duração</label>
+                <input class="form-control"  placeholder="99:99" onkeypress="$(this).mask('00:00');" th:errorclass="is-invalid" type="text" th:field="*{duracao}">
+                <div class="invalid-feedback" th:errors="*{duracao}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Valor</label>
+                <input class="form-control" placeholder="Digite o valor do serviço em R$" th:errorclass="is-invalid" type="number" th:field="*{valor}">
+                <div class="invalid-feedback" th:errors="*{valor}"></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submeter</button>
+            <a href="javascript:history.back()" class="btn btn-link btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        </form>
+    </div>
+</div>

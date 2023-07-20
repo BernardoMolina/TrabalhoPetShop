@@ -1,0 +1,13 @@
+<div class="container" th:fragment="form(requisicaoFormTipo, action)">
+    <div class="row">
+        <form th:object="${requisicaoFormTipo}" th:action="${action}" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Nome do Tipo</label>
+                <input class="form-control" placeholder="Digite o nome do tipo de animal" th:errorclass="is-invalid" type="text" th:field="*{nome}">
+                <div class="invalid-feedback" th:errors="*{nome}"></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submeter</button>
+            <a href="javascript:history.back()" class="btn btn-link btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        </form>
+    </div>
+</div>

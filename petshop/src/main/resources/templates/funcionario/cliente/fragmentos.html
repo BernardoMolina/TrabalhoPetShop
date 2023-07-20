@@ -1,0 +1,63 @@
+<div class="container" th:fragment="form(requisicaoFormCliente, action)">
+    <div class="row">
+        <form th:object="${requisicaoFormCliente}" th:action="${action}" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Nome do Cliente</label>
+                <input class="form-control" placeholder="Digite o nome do cliente" th:errorclass="is-invalid" type="text" th:field="*{nome}">
+                <div class="invalid-feedback" th:errors="*{nome}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Rg</label>
+                <input class="form-control" placeholder="9999999999" onkeypress="$(this).mask('0000000000');" maxlength="10" minlength="10" th:errorclass="is-invalid" type="text" th:field="*{rg}">
+                <div class="invalid-feedback" th:errors="*{rg}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cpf</label>
+                <input class="form-control" placeholder="999.999.999-99" onkeypress="$(this).mask('000.000.000-00');" maxlength="14" minlength="14" th:errorclass="is-invalid" type="text" th:field="*{cpf}">
+                <div class="invalid-feedback" th:errors="*{cpf}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Telefone</label>
+                <input class="form-control" placeholder="(99) 99999-9999" onkeypress="$(this).mask('(00) 90000-0000');" maxlength="15" minlength="15" th:errorclass="is-invalid" type="text" th:field="*{telefone}">
+                <div class="invalid-feedback" th:errors="*{telefone}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Rua</label>
+                <input class="form-control" placeholder="Digite o nome da rua" th:errorclass="is-invalid" type="text" th:field="*{rua}">
+                <div class="invalid-feedback" th:errors="*{rua}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Bairro</label>
+                <input class="form-control" placeholder="Digite o nome do bairro" th:errorclass="is-invalid" type="text" th:field="*{bairro}">
+                <div class="invalid-feedback" th:errors="*{bairro}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Complemento</label>
+                <input class="form-control" placeholder="Digite o complemento" th:errorclass="is-invalid" type="text" th:field="*{complemento}">
+                <div class="invalid-feedback" th:errors="*{complemento}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cep</label>
+                <input class="form-control" placeholder="99999-999" onkeypress="$(this).mask('00000-000');" maxlength="9" minlength="9" th:errorclass="is-invalid" type="text" th:field="*{cep}">
+                <div class="invalid-feedback" th:errors="*{cep}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cidade</label>
+                <input class="form-control" placeholder="Digite o nome da cidade" th:errorclass="is-invalid" type="text" th:field="*{cidade}">
+                <div class="invalid-feedback" th:errors="*{cidade}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Estado</label>
+                <input class="form-control" placeholder="Digite o nome do estado" th:errorclass="is-invalid" type="text" th:field="*{estado}">
+                <div class="invalid-feedback" th:errors="*{estado}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Pais</label>
+                <input class="form-control" placeholder="Digite o nome do pais" th:errorclass="is-invalid" type="text" th:field="*{pais}">
+                <div class="invalid-feedback" th:errors="*{pais}"></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submeter</button>
+            <a href="javascript:history.back()" class="btn btn-link btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        </form>
+    </div>
+</div>

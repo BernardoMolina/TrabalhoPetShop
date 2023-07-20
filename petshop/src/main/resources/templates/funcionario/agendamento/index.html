@@ -1,0 +1,72 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Lista de Agendamentos')}"></head>
+
+<body>
+<header th:replace="~{fragmentos :: header}"></header>
+
+<div class="container mt-2 mb-2">
+    <h1>Lista de Agendamentos</h1>
+</div>
+
+<div class="container mb-4">
+    <div class="col-12">
+        <span th:styleappend="${(param.erro == null || param.mensagem == null) ? 'display: none;' : ''}"
+              th:classappend="${(param.erro != null && param.erro) ? 'error-message' : 'success-message'}"
+              th:text="${param.mensagem != null ? param.mensagem : ''}">Mensagem!</span>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome do Cliente</th>
+                    <th scope="col">Nome do Pet</th>
+                    <th scope="col">Nome do Serviço</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="agendamento : ${agendamento}">
+                    <th class="col-1" scope="row" th:text="${agendamento.getIdagendamento()}">ID</th>
+                    <td class="col-4" th:text="${agendamento.pet.getCliente().getNome()}">Nome do Dono</td>
+                    <td class="col-4" th:text="${agendamento.pet.getNome()}">Nome do Pet</td>
+                    <td class="col-2" th:text="${agendamento.servico.getNome()}">Nome do Serviço</td>
+                    <td class="col-2" th:text="${agendamento.dataa}">Data</td>
+                    <td class="col-2" th:text="${agendamento.hora}">Hora</td>
+
+                    <td class="col-1"><a
+                            th:href="@{/funcionario/agendamento/{idagendamento}(idagendamento = ${agendamento.idagendamento})}"
+                            class="btn btn-info btn-lg active" role="button" aria-pressed="true">Detalhes</a></td>
+                    <td class="col-1"><a
+                            th:href="@{/funcionario/agendamento/{idagendamento}/edit(idagendamento = ${agendamento.idagendamento})}"
+                            class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Editar</a></td>
+                    <td class="col-1"><a
+                            th:href="@{/funcionario/agendamento/{idagendamento}/delete(idagendamento = ${agendamento.idagendamento})}"
+                            class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Deletar</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <a href="/funcionario/agendamento/new" class="btn btn-link btn-lg active" role="button" aria-pressed="true">Novo
+            Agendamento</a>
+    </div>
+</div>
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

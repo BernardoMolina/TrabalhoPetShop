@@ -1,0 +1,52 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Novo Serviço')}"></head>
+
+<body>
+<header th:replace="~{fragmentos :: header}"></header>
+
+<div class="container mt-2 mb-2">
+    <h1>Detalhes do Serviço</h1>
+</div>
+
+<main>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover table-success">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Duração</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th class="col-1" scope="row" th:text="${servico.getIdservico()}">ID</th>
+                        <td class="col-4" th:text="${servico.nome}">Nome do Professor</td>
+                        <td class="col-2" th:text="${servico.descricao}">Descricao</td>
+                        <td class="col-2" th:text="${servico.duracao}">Duracao</td>
+                        <td class="col-2" th:text="${servico.valor}">Valor</td>
+
+                        <td class="col-1"><a
+                                th:href="@{/funcionario/servico/{idservico}/edit(idservico = ${servico.idservico})}"
+                                class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Editar</a></td>
+                        <td class="col-1"><a
+                                href="/funcionario/servico"
+                                class="btn btn-link btn-lg active" role="button" aria-pressed="true">Voltar</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+</body>
+</html>

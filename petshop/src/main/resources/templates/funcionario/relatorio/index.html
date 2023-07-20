@@ -1,0 +1,97 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Relatório')}"></head>
+
+<body>
+<header th:replace="~{fragmentos :: header}" ></header>
+
+<div class="container mb-4">
+    <div class="col-12">
+        <span th:styleappend="${(param.erro == null || param.mensagem == null) ? 'display: none;' : ''}"
+              th:classappend="${(param.erro != null && param.erro) ? 'error-message' : 'success-message'}"
+              th:text="${param.mensagem != null ? param.mensagem : ''}">Mensagem!</span>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="container mt-4 mb-4">
+            <h3>Valores recebidos por Serviço</h3>
+        </div>
+        <div class="col-12">
+            <table class="table table-info table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Nome do serviço</th>
+                    <th scope="col">Valor em R$</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="servico : ${servico}">
+
+                    <td class="col-4" th:text="${servico.getNome()}">Nome do Servico</td>
+                    <td class="col-2" th:text="${agendamentoRepository.somaservico(servico.getNome())}">Valor</td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container mt-4 mb-4">
+            <h3>Valores Recebidos por Cliente</h3>
+        </div>
+        <div class="col-12">
+            <table class="table table-info table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Nome do cliente</th>
+                    <th scope="col">Valor em R$</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="cliente : ${cliente}">
+
+                    <td class="col-4" th:text="${cliente.getNome()}">Nome do Cliente</td>
+                    <td class="col-2" th:text="${agendamentoRepository.somacliente(cliente.getNome())}">Valor</td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container mt-4 mb-4">
+            <h3>Valores recebidos por Pet</h3>
+        </div>
+        <div class="col-12">
+            <table class="table table-info table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Nome do Pet</th>
+                    <th scope="col">Valor em R$</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pet : ${pet}">
+
+                    <td class="col-4" th:text="${pet.getNome()}">Nome do Pet</td>
+                    <td class="col-2" th:text="${agendamentoRepository.somapet(pet.getNome())}">Valor</td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

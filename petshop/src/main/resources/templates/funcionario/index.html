@@ -1,0 +1,72 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Lista de Funcionários')}"></head>
+
+<body>
+<header th:replace="~{fragmentos :: header}"></header>
+
+<div class="container mt-2 mb-2">
+    <h1>Lista de Funcionários</h1>
+</div>
+
+<div class="container mb-4">
+    <div class="col-12">
+        <span th:styleappend="${(param.erro == null || param.mensagem == null) ? 'display: none;' : ''}"
+              th:classappend="${(param.erro != null && param.erro) ? 'error-message' : 'success-message'}"
+              th:text="${param.mensagem != null ? param.mensagem : ''}">Mensagem!</span>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Rg</th>
+                    <th scope="col">Cpf</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="funcionario : ${funcionario}">
+                    <th class="col-1" scope="row" th:text="${funcionario.getIdfuncionario()}">ID</th>
+                    <td class="col-4" th:text="${funcionario.nome}">Nome do Funcionário</td>
+                    <td class="col-2" th:text="${funcionario.rg}">Rg</td>
+                    <td class="col-2" th:text="${funcionario.cpf}">Cpf</td>
+                    <td class="col-2" th:text="${funcionario.telefone}">Telefone</td>
+                    <td class="col-2" th:text="${funcionario.email}">Email</td>
+
+                    <td class="col-1"><a
+                            th:href="@{/funcionario/{idfuncionario}(idfuncionario = ${funcionario.idfuncionario})}"
+                            class="btn btn-info btn-lg active" role="button" aria-pressed="true">Detalhes</a></td>
+                    <td class="col-1"><a
+                            th:href="@{/funcionario/{idfuncionario}/edit(idfuncionario = ${funcionario.idfuncionario})}"
+                            class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Editar</a></td>
+                    <td class="col-1"><a
+                            th:href="@{/funcionario/{idfuncionario}/delete(idfuncionario = ${funcionario.idfuncionario})}"
+                            class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Deletar</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <a href="/funcionario/new" class="btn btn-link btn-lg active" role="button" aria-pressed="true">Novo
+            Funcionário</a>
+    </div>
+</div>
+
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<div class="container" th:fragment="form(requisicaoFormPet, action)">
+    <div class="row">
+        <form th:object="${requisicaoFormPet}" th:action="${action}" method="POST">
+
+            <div class="mb-3">
+                <label class="form-label">Tipo de animal</label>
+                <select class="form-select" th:field="*{tipo.idtipo}">
+                    <option th:each="tipo : ${tipo}"
+                            th:value="${tipo.idtipo}" th:text="${tipo.nome}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Raça</label>
+                <select class="form-select" th:field="*{raca.idraca}">
+                    <option th:each="raca : ${raca}"
+                            th:value="${raca.idraca}" th:text="${raca.nome}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cliente</label>
+                <select class="form-select" th:field="*{cliente.idcliente}">
+                    <option th:each="cliente : ${cliente}"
+                            th:value="${cliente.idcliente}" th:text="${cliente.nome}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nome do animal</label>
+                <input class="form-control" placeholder="Digite o nome do animal" th:errorclass="is-invalid" type="text" th:field="*{nome}">
+                <div class="invalid-feedback" th:errors="*{nome}"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Data de nascimento</label>
+                <input class="form-control" placeholder="31/12/2023" onkeypress="$(this).mask('00/00/0000');" maxlength="10" minlength="10" th:errorclass="is-invalid" type="text" th:field="*{data_de_nascimento}">
+                <div class="invalid-feedback" th:errors="*{data_de_nascimento}"></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submeter</button>
+            <a href="javascript:history.back()" class="btn btn-link btn-lg active" role="button" aria-pressed="true">Voltar</a>
+        </form>
+    </div>
+</div>

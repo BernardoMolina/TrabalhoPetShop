@@ -1,0 +1,48 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Nova Raça')}"></head>
+
+<body>
+<header th:replace="~{fragmentos :: header}"></header>
+
+<div class="container mt-2 mb-2">
+    <h1>Detalhes da Raça</h1>
+</div>
+
+<main>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover table-success">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome do Tipo de Animal</th>
+                        <th scope="col">Nome da Raça</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="raca : ${raca}">
+                        <th class="col-1" scope="row" th:text="${raca.getIdraca()}">ID</th>
+                        <td class="col-4" th:text="${raca.getTipo().getNome()}">Nome do Tipo de animal</td>
+                        <td class="col-2" th:text="${raca.getNome()}">Nome da raça</td>
+
+                        <td class="col-1"><a
+                                th:href="@{/funcionario/raca/{idraca}/edit(idraca = ${raca.idraca})}"
+                                class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Editar</a></td>
+                        <td class="col-1"><a
+                                href="/funcionario/raca"
+                                class="btn btn-link btn-lg active" role="button" aria-pressed="true">Voltar</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+</body>
+</html>
